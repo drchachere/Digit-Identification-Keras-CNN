@@ -43,7 +43,7 @@ y_test = np_utils.to_categorical(y_test, 10)
 
 # Create the model
 model = Sequential()
-model.add(Conv2D(50, kernel_size=(3, 3), activation='relu', input_shape=(32, 32, 3)))
+model.add(Conv2D(70, kernel_size=(3, 3), activation='relu', input_shape=(32, 32, 3)))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
 model.add(Dense(16, activation='relu'))
@@ -54,11 +54,8 @@ model.add(Dense(10, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 # Fit the model
-
-# model.fit(X_train, y_train, batch_size=250, epochs=100, verbose=1, validation_data=(X_test, y_test))
-# test accuracy = .7896
-
-model.fit(X_train, y_train, batch_size=500, epochs=80, verbose=1, validation_data=(X_test, y_test))
+model.fit(X_train, y_train, batch_size=250, epochs=80, verbose=1, validation_data=(X_test, y_test))
+# test accuracy = 0.7286
 
 # Evaluate the model
 score = model.evaluate(X_test, y_test, verbose=0)
